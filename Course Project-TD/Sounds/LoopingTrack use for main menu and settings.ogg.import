@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/LoopingTrack use for main menu and settings.ogg-0dcbbc199669ce58e8c8ceb7d686628f.oggstr"
+
+[deps]
+
+source_file="res://Sounds/LoopingTrack use for main menu and settings.ogg"
+dest_files=[ "res://.import/LoopingTrack use for main menu and settings.ogg-0dcbbc199669ce58e8c8ceb7d686628f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

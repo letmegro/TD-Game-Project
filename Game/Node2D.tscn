@@ -1,0 +1,475 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Game/levelMapTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Game/main.gd" type="Script" id=2]
+[ext_resource path="res://BugInvasion Assets/roman_new_times/Roman_New_Times.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sounds/Menu_Selection_Click.wav" type="AudioStream" id=4]
+[ext_resource path="res://BugInvasion Assets/Tilemaps/greenTile.png" type="Texture" id=5]
+[ext_resource path="res://BugInvasion Assets/Tilemaps/redTile.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/LevelMusic1 use for level 1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Sound Effects/Placement/tower_placement.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Game/Winner assets/impact.png" type="Texture" id=9]
+[ext_resource path="res://Game/UI.gd" type="Script" id=11]
+[ext_resource path="res://Towers/MachinGun.png" type="Texture" id=12]
+[ext_resource path="res://Towers/icegun.png" type="Texture" id=13]
+[ext_resource path="res://Towers/cannon.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Control
+
+\"\"\"
+\"Nicolas Korsunski
+\"2022-03-22
+\"
+\"popup menu and game pause
+\"\"\"
+
+onready var _pm = $\"..\"
+
+func _input(event):
+	if event is InputEventKey and event.is_pressed():
+		if event.scancode == KEY_ESCAPE:
+			if _pm.get_parent().place_mode:
+				_pm.get_parent().cancel_placement_mode()
+			_pm.set_position(Vector2(0, 0), false)
+			if !_pm.is_visible_in_tree():
+				_pm.show()
+			else:
+				_pm.hide()
+			if get_tree().is_paused():
+				get_tree().paused = false
+			else:
+				get_tree().paused = true
+				
+			
+		
+	
+
+func _on_Button_pressed():
+	if GameVariables.sound:
+		$\"../click\".play()
+		yield(get_tree().create_timer(0.5), \"timeout\")
+		
+	
+	get_tree().paused = false
+	$\"..\".hide()
+	
+
+
+func _on_Button2_pressed():
+	if GameVariables.sound:
+		$\"../click\".play()
+		yield(get_tree().create_timer(0.5), \"timeout\")
+		
+	
+	get_tree().paused = false
+	get_tree().change_scene(\"res://Menu/Node2D.tscn\")
+	
+
+
+func _on_Button3_pressed():
+	if GameVariables.sound:
+		$\"../click\".play()
+		yield(get_tree().create_timer(0.5), \"timeout\")
+		
+	
+	get_tree().quit()
+	
+"
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.0149813, 0.0449438, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.700375, 0.700375, 0.700375, 1, 0.790376, 0.790376, 0.790376, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.00374532, 0.011236, 0.0299625, 0.0749064, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.651685, 0.651685, 0.651685, 1, 0.879343, 0.879343, 0.879343, 1, 0.757751, 0.757751, 0.757751, 1, 0.868119, 0.868119, 0.868119, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.00749064, 0.011236, 0.0149813, 0.0224719, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.89131, 0.89131, 0.89131, 1, 0.384054, 0.384054, 0.384054, 1, 0.82397, 0.82397, 0.82397, 1, 0.834603, 0.834603, 0.834603, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="TileSet" id=4]
+0/name = "redTile.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "greenTile.png 1"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="Animation" id=12]
+resource_name = "winner"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.7, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true ]
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Level" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 1610612743, 0, 1, 1610612743, 0, 2, 12, 0, 3, -1610612721, 0, 4, 14, 0, 5, 13, 0, 6, 12, 0, 7, 11, 0, 8, 12, 0, 9, 1610612743, 0, 10, 12, 0, 11, 11, 0, 12, 12, 0, 13, 13, 0, 14, 12, 0, 15, 14, 0, 65536, 7, 0, 65537, 12, 0, 65538, -1610612714, 0, 65539, -1610612714, 0, 65540, -1610612714, 0, 65541, -1610612714, 0, 65542, -1610612714, 0, 65543, -1610612714, 0, 65544, -1610612714, 0, 65545, 7, 0, 65546, -1610612714, 0, 65547, -1610612714, 0, 65548, -1610612714, 0, 65549, -1610612714, 0, 65550, -1610612714, 0, 65551, 11, 0, 131072, 7, 0, 131073, -1073741812, 0, 131074, -1610612714, 0, 131080, -1610612714, 0, 131081, 7, 0, 131082, -1610612714, 0, 196608, 7, 0, 196609, 7, 0, 196610, -1610612714, 0, 196612, -1073741800, 0, 196613, 22, 0, 196614, 24, 0, 196616, -1610612714, 0, 196617, 7, 0, 196618, -1610612714, 0, 196620, -1073741800, 0, 196621, 22, 0, 196622, 22, 0, 196623, 15, 0, 262144, 7, 0, 262145, -1073741813, 0, 262146, -1610612714, 0, 262148, 22, 0, 262149, -1073741808, 0, 262150, 22, 0, 262152, -1610612714, 0, 262153, 7, 0, 262154, -1610612714, 0, 262156, 22, 0, 262157, 1610612752, 0, 262158, -1073741812, 0, 262159, 14, 0, 327680, 1610612758, 0, 327681, 1610612758, 0, 327682, -1610612712, 0, 327684, 22, 0, 327685, 7, 0, 327686, 22, 0, 327688, 1610612760, 0, 327689, -1610612714, 0, 327690, -1610612712, 0, 327692, 22, 0, 327693, -1610612723, 0, 327694, 7, 0, 327695, 7, 0, 393220, 22, 0, 393221, 7, 0, 393222, 22, 0, 393228, 22, 0, 393229, -1073741810, 0, 393230, 7, 0, 393231, 7, 0, 458752, 22, 0, 458753, 22, 0, 458754, 22, 0, 458755, 22, 0, 458756, 22, 0, 458757, 7, 0, 458758, 22, 0, 458759, 22, 0, 458760, 22, 0, 458761, 22, 0, 458762, 22, 0, 458763, 22, 0, 458764, 22, 0, 458765, 13, 0, 458766, 7, 0, 458767, 7, 0 )
+
+[node name="nav" type="Navigation2D" parent="."]
+
+[node name="nav_TileMap" type="TileMap" parent="nav"]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 131075, 1610612761, 0, 131076, 26, 0, 131077, 26, 0, 131078, 26, 0, 131079, -1073741799, 0, 131083, 1610612761, 0, 131084, 26, 0, 131085, 26, 0, 131086, 26, 0, 131087, 26, 0, 196611, 26, 0, 196615, 26, 0, 196619, 26, 0, 262147, 26, 0, 262151, 26, 0, 262155, 26, 0, 327683, 26, 0, 327687, 26, 0, 327691, 26, 0, 393216, 26, 0, 393217, 26, 0, 393218, 26, 0, 393219, 25, 0, 393223, -1610612711, 0, 393224, 26, 0, 393225, 26, 0, 393226, 26, 0, 393227, 25, 0 )
+
+[node name="start_position" type="Position2D" parent="."]
+position = Vector2( -2, 414 )
+
+[node name="end_position" type="Position2D" parent="."]
+position = Vector2( 1020, 158 )
+
+[node name="bug_spawn_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="enemies" type="YSort" parent="."]
+
+[node name="user_interface" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="user_interface"]
+margin_top = 512.0
+margin_right = 1026.0
+margin_bottom = 598.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="points" type="Label" parent="user_interface"]
+margin_left = 2.0
+margin_top = -2.0
+margin_right = 134.0
+margin_bottom = 244.0
+custom_fonts/font = SubResource( 1 )
+text = "000
+
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lives" type="Label" parent="user_interface"]
+margin_left = 814.0
+margin_top = 534.0
+margin_right = 970.0
+margin_bottom = 584.0
+custom_fonts/font = SubResource( 2 )
+text = "Lives: 200"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next_wave" type="Label" parent="user_interface"]
+margin_left = 22.0
+margin_top = 530.0
+margin_right = 178.0
+margin_bottom = 580.0
+custom_fonts/font = SubResource( 2 )
+text = "Next wave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next_wave_time" type="Label" parent="user_interface"]
+margin_left = 204.0
+margin_top = 534.0
+margin_right = 360.0
+margin_bottom = 637.0
+custom_fonts/font = SubResource( 2 )
+text = "00
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start_next_wave" type="Button" parent="user_interface"]
+margin_left = 278.0
+margin_top = 544.0
+margin_right = 420.0
+margin_bottom = 572.0
+text = "Wave"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wave_count" type="Label" parent="user_interface"]
+margin_left = 375.767
+margin_top = 551.129
+margin_right = 415.767
+margin_bottom = 565.129
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -2 )
+stream = ExtResource( 7 )
+volume_db = -5.415
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -514.0
+margin_top = -598.0
+margin_right = -146.0
+margin_bottom = -308.0
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="PopupMenu"]
+margin_left = 10.0
+margin_top = 3.0
+margin_right = 366.0
+margin_bottom = 274.0
+script = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="PopupMenu/Control"]
+anchor_left = 0.006
+anchor_top = 0.03
+anchor_right = 0.98
+anchor_bottom = 0.328
+margin_left = -6.136
+margin_top = -5.13
+margin_right = 2.12
+margin_bottom = 2.112
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="PopupMenu/Control"]
+anchor_left = 0.006
+anchor_top = 0.362
+anchor_right = 0.98
+anchor_bottom = 0.649
+margin_left = -5.136
+margin_top = -4.10201
+margin_right = 3.12
+margin_bottom = 4.12099
+text = "Back to menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="PopupMenu/Control"]
+anchor_left = 0.006
+anchor_top = 0.686
+anchor_right = 0.983
+anchor_bottom = 1.0
+margin_left = -4.136
+margin_top = -4.90601
+margin_right = 1.05197
+margin_bottom = 6.0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="click" type="AudioStreamPlayer2D" parent="PopupMenu"]
+stream = ExtResource( 4 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 11 )
+
+[node name="HUD" type="Control" parent="UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -510.0
+margin_top = -599.0
+margin_right = 518.0
+margin_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -14.0
+margin_top = 220.0
+margin_right = 204.0
+margin_bottom = 291.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gun1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource( 7 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun1"]
+anchor_left = 0.521
+anchor_top = 0.5
+anchor_right = 0.521
+anchor_bottom = 0.5
+margin_left = -20.47
+margin_top = -21.0
+margin_right = 20.53
+margin_bottom = 17.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gun2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+margin_left = 74.0
+margin_right = 144.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource( 9 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun2"]
+anchor_left = 0.536
+anchor_top = 0.5
+anchor_right = 0.536
+anchor_bottom = 0.5
+margin_left = -20.52
+margin_top = -22.0
+margin_right = 20.48
+margin_bottom = 23.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gun3" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+margin_left = 148.0
+margin_right = 218.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource( 11 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun3"]
+anchor_left = 0.493
+anchor_top = 0.543
+anchor_right = 0.493
+anchor_bottom = 0.543
+margin_left = -22.51
+margin_top = -22.01
+margin_right = 22.49
+margin_bottom = 21.99
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="tower_placement" type="TileMap" parent="."]
+tile_set = SubResource( 4 )
+cell_quadrant_size = 1
+format = 1
+
+[node name="PlacementSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Impact" type="Sprite" parent="."]
+position = Vector2( 770, 558 )
+scale = Vector2( 0.134551, 0.130225 )
+texture = ExtResource( 9 )
+
+[node name="winner" type="AnimationPlayer" parent="Impact"]
+anims/winner = SubResource( 12 )
+
+[connection signal="timeout" from="bug_spawn_timer" to="." method="_on_bug_spawn_timer_timeout"]
+[connection signal="pressed" from="user_interface/start_next_wave" to="." method="_on_start_next_wave_pressed"]
+[connection signal="pressed" from="PopupMenu/Control/Button" to="PopupMenu/Control" method="_on_Button_pressed"]
+[connection signal="pressed" from="PopupMenu/Control/Button2" to="PopupMenu/Control" method="_on_Button2_pressed"]
+[connection signal="pressed" from="PopupMenu/Control/Button3" to="PopupMenu/Control" method="_on_Button3_pressed"]
+[connection signal="pressed" from="UI/HUD/BuildBar/Gun1" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="UI/HUD/BuildBar/Gun2" to="." method="_on_Gun2_pressed"]
+[connection signal="pressed" from="UI/HUD/BuildBar/Gun3" to="." method="_on_Gun3_pressed"]

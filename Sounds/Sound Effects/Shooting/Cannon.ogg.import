@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cannon.ogg-b1fe2285d6af7167d7d9e1faee022b7b.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Sound Effects/Shooting/Cannon.ogg"
+dest_files=[ "res://.import/Cannon.ogg-b1fe2285d6af7167d7d9e1faee022b7b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
