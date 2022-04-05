@@ -78,10 +78,6 @@ func _input(event):
 		
 	
 
-func tower_delete(pos):
-	pass
-	#add a delete tower function
-
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and can_place_tower:
 		$tower_placement.clear()
