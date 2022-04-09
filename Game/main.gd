@@ -16,11 +16,6 @@ var waves = 10
 var wave_count = 0
 #map node in order to have a variable access to updating map when a new tower is placed or deleted
 var map_node
-
-#presentation iterative example vars
-var enemy_count = 10
-var spawn_rate = 1.0
-var points = 0
 #tower placement variables
 var can_place_tower = false
 var place_mode = false
@@ -37,10 +32,9 @@ func _ready():
 	if GameVariables.music:
 		$"AudioStreamPlayer2D".play()
 	$bug_spawn_timer.start(30)
-	#bugs remaining starts off at 10
-	bugs_remaining = enemy_count
+	bugs_remaining = 10
 	$user_interface/lives.text = "Lives: " + str(lives)
-	$Impact.visible = false
+
 	invalid_tiles = $nav/nav_TileMap.get_used_cells()
 	
 	map_node = get_node(".")
@@ -77,6 +71,10 @@ func _input(event):
 			
 		
 	
+
+func tower_delete(pos):
+	pass
+	#add a delete tower function
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and can_place_tower:
@@ -174,27 +172,14 @@ func _on_bug_spawn_timer_timeout():
 	bugs_remaining -= 1
 	if bugs_remaining > 0:
 		#timer that determines spawn rate turn into a variable for difficulty
-		$bug_spawn_timer.start(spawn_rate) 
+		$bug_spawn_timer.start(1) 
 	else:
-		#points formula
-		points += (100*(wave_count*(enemy_count))) - (100*(250-lives))
-		$user_interface/points.text =  String(points)
 		#when bugs are done spawning for the round reset the wait timer to 60 for auto start 
 		$bug_spawn_timer.start(60)
 		#reset bug counter, make into a variable for iterative difficulty
-		if enemy_count <= 45:
-			#highest number of enemies is 50
-			enemy_count += 5
-		if spawn_rate >= 0.3:
-			#lowest rate is 0.2
-			spawn_rate -=0.2
-		bugs_remaining = enemy_count
-		if wave_count == 5:
-			#add a congrats to the player
-			get_node("Impact/winner").play("winner")
-			$Impact.visible = true
+		bugs_remaining = 10
+		
 		$user_interface/start_next_wave.disabled = false
-		begin_next_wave()
 		
 	
 
@@ -210,7 +195,7 @@ func begin_next_wave():
 
 func _on_start_next_wave_pressed():
 	_on_bug_spawn_timer_timeout()
-	#begin_next_wave()
+	begin_next_wave()
 
 func _on_TextureButton_pressed():
 	$tower_placement.clear()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Game/levelMapTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/main.gd" type="Script" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://BugInvasion Assets/Tilemaps/redTile.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/LevelMusic1 use for level 1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Sounds/Sound Effects/Placement/tower_placement.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Game/Winner assets/impact.png" type="Texture" id=9]
 [ext_resource path="res://Game/UI.gd" type="Script" id=11]
 [ext_resource path="res://Towers/MachinGun.png" type="Texture" id=12]
 [ext_resource path="res://Towers/icegun.png" type="Texture" id=13]
@@ -136,22 +135,6 @@ gradient = SubResource( 10 )
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="Animation" id=12]
-resource_name = "winner"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2, 1.4, 1.6, 1.7, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true ]
-}
-
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -194,10 +177,9 @@ __meta__ = {
 }
 
 [node name="points" type="Label" parent="user_interface"]
-margin_left = 2.0
-margin_top = -2.0
-margin_right = 134.0
-margin_bottom = 244.0
+margin_left = 50.0
+margin_right = 182.0
+margin_bottom = 246.0
 custom_fonts/font = SubResource( 1 )
 text = "000
 
@@ -454,16 +436,6 @@ format = 1
 
 [node name="PlacementSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
-
-[node name="Sprite" type="Sprite" parent="."]
-
-[node name="Impact" type="Sprite" parent="."]
-position = Vector2( 770, 558 )
-scale = Vector2( 0.134551, 0.130225 )
-texture = ExtResource( 9 )
-
-[node name="winner" type="AnimationPlayer" parent="Impact"]
-anims/winner = SubResource( 12 )
 
 [connection signal="timeout" from="bug_spawn_timer" to="." method="_on_bug_spawn_timer_timeout"]
 [connection signal="pressed" from="user_interface/start_next_wave" to="." method="_on_start_next_wave_pressed"]

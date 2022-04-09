@@ -1,45 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
-[sub_resource type="GDScript" id=3]
-script/source = "\"\"\"
-\"Nicolas Korsunski
-\"2022-03-19
-\"
-\"script for bullet collision if hit remove the bullet and add a signal
-\"bullet logic script, basic script reuse for every bullet for iteration 2 implementation 
-\"\"\"
-
-extends KinematicBody2D
-
-var speed = 1300
-var velocity = Vector2()
-
-func start(pos, dir):
-	rotation = dir
-	position = pos
-	velocity = Vector2(speed, 0).rotated(rotation-125)
-
-func _physics_process(delta):
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		yield(get_tree().create_timer(0.04), \"timeout\")
-		self.free()
-		
-	
-
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-"
+[ext_resource path="res://Towers/TurretLogic/bulletLogic.gd" type="Script" id=2]
 
 [sub_resource type="StreamTexture" id=2]
 flags = 4
+load_path = "res://.import/bullet.png-38e097e862fb3c6380a7596bd7b8d003.stex"
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
 height = 4.0
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-script = SubResource( 3 )
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 2 )
