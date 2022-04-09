@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sounds/Menu_Selection_Click.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/LoopingTrack use for main menu and settings.ogg" type="AudioStream" id=2]
 [ext_resource path="res://settings/settings.gd" type="Script" id=3]
+[ext_resource path="res://ButtonsAndArt/background-small-size/fossil_cave.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0352941, 0.027451, 0.027451, 1 )
@@ -24,6 +25,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -303.0
+margin_right = 516.0
+margin_bottom = 299.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,16 +54,18 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.823529 )
 margin_right = 281.0
 margin_bottom = 290.0
 size_flags_vertical = 3
 disabled = true
+expand_icon = true
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/Button"]
 margin_left = -2.5
-margin_top = 4.0
+margin_top = -2.0
 margin_right = 278.5
-margin_bottom = 28.0
+margin_bottom = 22.0
 text = "Music"
 align = 2
 __meta__ = {
@@ -55,14 +73,10 @@ __meta__ = {
 }
 
 [node name="CheckBox2" type="CheckBox" parent="VBoxContainer/Button"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -143.0
-margin_top = -113.0
-margin_right = 138.0
-margin_bottom = -81.0
+margin_left = -2.5
+margin_top = 19.0
+margin_right = 278.5
+margin_bottom = 43.0
 text = "SFX"
 align = 2
 __meta__ = {
@@ -70,14 +84,10 @@ __meta__ = {
 }
 
 [node name="returnBtn" type="Button" parent="VBoxContainer/Button"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -38.0
-margin_top = 98.0
-margin_right = 38.0
-margin_bottom = 139.0
+margin_left = 115.5
+margin_top = 262.0
+margin_right = 172.5
+margin_bottom = 289.0
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
