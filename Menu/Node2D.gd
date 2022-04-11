@@ -15,12 +15,18 @@ func _ready():
 		$AudioStreamPlayer.play()
 	elif GameVariables.music == false:
 		$AudioStreamPlayer.stop()
+		
+	$VideoPlayer.visible = false
 	
 
 func _on_start_pressed():
 	if GameVariables.sound:
 		$VBoxContainer/AudioStreamPlayer2D.play()
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.23), "timeout")
+		$AudioStreamPlayer.stop()
+	$VideoPlayer.visible=true #change with actual cut scene
+	$VideoPlayer.play()
+	yield(get_tree().create_timer(7.1), "timeout")
 	get_tree().change_scene("res://Game/Node2D.tscn")
 	
 
