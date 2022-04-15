@@ -1,64 +1,51 @@
-extends KinematicBody2D
+extends PathFollow2D
 """
 " Oluwasesan Adeleke & Nicolas Korsunski 
-" updated as of 2022-03-28
+" updated as of 2022-04-11
 " 
 " Enemy movement logic and dealth logic
 """
 
+#enemy speed
 var speed = 100
-var path : = PoolVector2Array() setget set_path
-var destination = Vector2()
-
-signal lose_a_life
-#adapt based on enemy type or hardcode logic per enemy if unable to create an adaptable code (easily)
+#enemy health
 var hp = GameVariables.AI_Dict_Var_Keys["spider"]["health"]
 
-func _ready():
-	pass
+#signals to connect instances with main script
+signal lose_a_life
+signal spider_cash_gained
+
+#plays animation for instance
+func _process(delta):
+	$spider/AnimationPlayer.play("spider")
+
+#enemy movement speed setting method
+func _physics_process(delta):
+	var distance = speed * delta
+	move(distance)
+
+
+func move(distance):
+	#enemy path set
+	set_offset(get_offset() + distance)
+	
+	if loop == false and get_unit_offset() == 1:
+		queue_free()
+		#signal whicch controls player health lose
+		emit_signal("lose_a_life")
 	
 
+#reduces enemy health on hit by turret
 func on_hit(damage):
 	hp -= damage
 	if hp <= 0:
 		on_destroy()
+		#destroys enemy instance if health is reached 0 or below
+		emit_signal("spider_cash_gained")
 		
 	
 
+#removes instance
 func on_destroy():
 	self.queue_free()
 
-func _process(delta):
-	get_node("AnimationPlayer").play("spider")
-
-func _physics_process(delta):
-	
-	if path.size() > 0:
-		
-		var distance = speed * delta
-		move_along_path(distance)
-	elif abs(position.x - destination.x) < 10 and abs(position.y - destination.y) < 10:
-		
-		queue_free()
-		emit_signal("lose_a_life")
-
-func move_along_path(distance):
-	var start_pos = position
-	
-	for i in range(path.size()):
-		
-		var distance_to_next = start_pos.distance_to(path[0])
-		if distance <= distance_to_next and distance > 0:
-			position = start_pos.linear_interpolate(path[0], distance / distance_to_next)
-			break
-		elif distance <= 0:
-			position = path[0]
-			break
-			
-		distance -= distance_to_next
-		start_pos = path[0]
-		path.remove(0)
-	
-func set_path(new_path):
-	
-	path = new_path

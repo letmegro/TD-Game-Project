@@ -12,7 +12,8 @@
 extends CanvasLayer
 
 #var tower_range
-
+#this tower is incharge of updating the radius tower and changing the colour of the radius
+#asset
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Towers/" + tower_type + ".tscn").instance()
 	drag_tower.set_name("DragTower")
@@ -28,6 +29,8 @@ func set_tower_preview(tower_type, mouse_position):
 	_range.texture = range_asset
 	_range.modulate = Color("ad54ff3c")
 	
+	#initiats the control of the tower radius and preview which is used
+	#in the main method as well as in this script
 	var control = Control.new()
 	control.add_child(drag_tower, true)
 	control.add_child(_range, true)
@@ -37,6 +40,7 @@ func set_tower_preview(tower_type, mouse_position):
 	move_child(get_node("TowerPreview"), 0)
 	
 
+#updates teh colour of the tower assets
 func update_tower_preview(new_position, color):
 	get_node("TowerPreview").rect_position = new_position
 	if get_node("TowerPreview/DragTower").modulate != Color(color):

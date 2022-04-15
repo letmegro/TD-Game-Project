@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Game/levelMapTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/main.gd" type="Script" id=2]
@@ -13,15 +13,7 @@
 [ext_resource path="res://Towers/icegun.png" type="Texture" id=13]
 [ext_resource path="res://Towers/cannon.png" type="Texture" id=14]
 
-[sub_resource type="DynamicFont" id=1]
-size = 80
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 3 )
-
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Control
 
 \"\"\"
@@ -84,28 +76,28 @@ func _on_Button3_pressed():
 	
 "
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=14]
 offsets = PoolRealArray( 0, 0.0149813, 0.0449438, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.700375, 0.700375, 0.700375, 1, 0.790376, 0.790376, 0.790376, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 14 )
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=15]
 offsets = PoolRealArray( 0, 0.00374532, 0.011236, 0.0299625, 0.0749064, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.651685, 0.651685, 0.651685, 1, 0.879343, 0.879343, 0.879343, 1, 0.757751, 0.757751, 0.757751, 1, 0.868119, 0.868119, 0.868119, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 15 )
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=16]
 offsets = PoolRealArray( 0, 0.00749064, 0.011236, 0.0149813, 0.0224719, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.89131, 0.89131, 0.89131, 1, 0.384054, 0.384054, 0.384054, 1, 0.82397, 0.82397, 0.82397, 1, 0.834603, 0.834603, 0.834603, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 16 )
 
-[sub_resource type="TileSet" id=4]
+[sub_resource type="TileSet" id=10]
 0/name = "redTile.png 0"
 0/texture = ExtResource( 6 )
 0/tex_offset = Vector2( 0, 0 )
@@ -135,6 +127,29 @@ gradient = SubResource( 10 )
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="Curve2D" id=11]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 8.94198, 412.273, -28.2843, 0, 28.2843, 0, 188.583, 413, 0, 4.94975, 0, -4.94975, 221.583, 369, 0.707107, 1.41421, -0.707107, -1.41421, 222.583, 223, -43.1335, 0.707107, 43.1335, -0.707107, 269.583, 166, -58.6899, -2.82843, 58.6899, 2.82843, 420.583, 163, 0, 0, 0, 0, 479.583, 220, 0, 0, 0, 0, 482.583, 364, -48.7904, -5.65685, 48.7904, 5.65685, 532.583, 409, -31.8198, 1.41421, 31.8198, -1.41421, 702.583, 406, 0, 0, 0, 0, 730.583, 358, 0, 0, 0, 0, 731.169, 225, -55.8614, 1.41421, 55.8614, -1.41421, 787.169, 159, 0, 0, 0, 0, 1020.17, 159 )
+}
+
+[sub_resource type="Curve2D" id=12]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1.8783, 355.351, 0, 0, 0, 0, 65.5179, 349.694, 0, 0, 0, 0, 129.158, 331.309, 0, 0, 0, 0, 194.918, 306.561, 0, 0, 0, 0, 255.023, 286.054, 0, 0, 0, 0, 305.227, 271.205, 0, 0, 0, 0, 349.775, 266.963, 0, 0, 0, 0, 378.766, 269.084, 0, 0, 0, 0, 414.122, 277.569, 0, 0, 0, 0, 440.992, 291.711, 0, 0, 0, 0, 496.146, 323.531, -63.6396, -1.41421, 63.6396, 1.41421, 563.307, 352.523, -26.163, -2.82843, 26.163, 2.82843, 664.424, 356.058, -7.77817, 4.94975, 7.77817, -4.94975, 703.314, 336.966, 0, 0, 0, 0, 742.205, 314.339, 0, 0, 0, 0, 821.269, 236.557, -40.3051, 19.0919, 40.3051, -19.0919, 901.172, 183.524, 0, 0, 0, 0, 981.782, 172.21, 0, 0, 0, 0, 1020.66, 170.796 )
+}
+
+[sub_resource type="Curve2D" id=13]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 283.031, 508.761, 0, 0, 0, 0, 258.282, 460.678, 0, 0, 0, 0, 234.241, 411.181, 0, 0, 0, 0, 227.17, 346.834, 0, 0, 0, 0, 234.241, 302.286, 0, 0, 0, 0, 234.241, 261.274, -29.6985, 24.0416, 29.6985, -24.0416, 262.98, 196.696, 0, 0, 0, 0, 302.578, 172.654, 0, 0, 0, 0, 354.197, 168.412, 0, 0, 0, 0, 405.109, 172.654, -14.8492, -15.5564, 14.8492, 15.5564, 444, 190.332, 0, 0, 0, 0, 466.627, 227.102, 0, 0, 0, 0, 470.87, 313.369, -2.82843, -19.799, 2.82843, 19.799, 475.112, 373.473, 0, 0, 0, 0, 504.811, 410.949, -19.799, 4.94975, 19.799, -4.94975, 635.481, 418.728, -19.799, 25.4558, 19.799, -25.4558, 725.99, 403.878, 0, 0, 0, 0, 742.961, 339.532, 0, 0, 0, 0, 750.032, 291.448, 0, 0, 0, 0, 746.497, 233.466, 0, 0, 0, 0, 755.689, 201.646, -9.19239, 4.94975, 9.19239, -4.94975, 769.831, 176.897, -4.94975, 1.41421, 4.94975, -1.41421, 810.806, 166.29, 0, 0, 0, 0, 844.04, 152.148, 0, 0, 0, 0, 873.031, 148.613, 0, 0, 0, 0, 911.215, 145.077, 0, 0, 0, 0, 933.842, 145.077, 0, 0, 0, 0, 955.763, 144.37, 0, 0, 0, 0, 976.976, 145.077, 0, 0, 0, 0, 993.239, 147.906, 0, 0, 0, 0, 1022.23, 140.835 )
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -151,15 +166,255 @@ format = 1
 tile_data = PoolIntArray( 131075, 1610612761, 0, 131076, 26, 0, 131077, 26, 0, 131078, 26, 0, 131079, -1073741799, 0, 131083, 1610612761, 0, 131084, 26, 0, 131085, 26, 0, 131086, 26, 0, 131087, 26, 0, 196611, 26, 0, 196615, 26, 0, 196619, 26, 0, 262147, 26, 0, 262151, 26, 0, 262155, 26, 0, 327683, 26, 0, 327687, 26, 0, 327691, 26, 0, 393216, 26, 0, 393217, 26, 0, 393218, 26, 0, 393219, 25, 0, 393223, -1610612711, 0, 393224, 26, 0, 393225, 26, 0, 393226, 26, 0, 393227, 25, 0 )
 
 [node name="start_position" type="Position2D" parent="."]
-position = Vector2( -2, 414 )
+position = Vector2( -2, 409 )
 
 [node name="end_position" type="Position2D" parent="."]
-position = Vector2( 1020, 158 )
+position = Vector2( 1020, 150 )
+
+[node name="Towers" type="Node2D" parent="."]
 
 [node name="bug_spawn_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="enemies" type="YSort" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -2 )
+stream = ExtResource( 7 )
+volume_db = -5.415
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -514.0
+margin_top = -598.0
+margin_right = -146.0
+margin_bottom = -308.0
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="PopupMenu"]
+margin_left = 10.0
+margin_top = 3.0
+margin_right = 366.0
+margin_bottom = 274.0
+script = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="PopupMenu/Control"]
+anchor_left = 0.006
+anchor_top = 0.03
+anchor_right = 0.98
+anchor_bottom = 0.328
+margin_left = -6.136
+margin_top = -5.13
+margin_right = 2.12
+margin_bottom = 2.112
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="PopupMenu/Control"]
+anchor_left = 0.006
+anchor_top = 0.362
+anchor_right = 0.98
+anchor_bottom = 0.649
+margin_left = -5.136
+margin_top = -4.10201
+margin_right = 3.12
+margin_bottom = 4.12099
+text = "Back to menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="PopupMenu/Control"]
+anchor_left = 0.006
+anchor_top = 0.686
+anchor_right = 0.983
+anchor_bottom = 1.0
+margin_left = -4.136
+margin_top = -4.90601
+margin_right = 1.05197
+margin_bottom = 6.0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="click" type="AudioStreamPlayer2D" parent="PopupMenu"]
+stream = ExtResource( 4 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 11 )
+
+[node name="HUD" type="Control" parent="UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -510.0
+margin_top = -599.0
+margin_right = 518.0
+margin_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -14.0
+margin_top = 220.0
+margin_right = 204.0
+margin_bottom = 291.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Gun1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource( 5 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun1"]
+anchor_left = 0.521
+anchor_top = 0.5
+anchor_right = 0.521
+anchor_bottom = 0.5
+margin_left = -20.47
+margin_top = -21.0
+margin_right = 20.53
+margin_bottom = 17.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Gun2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+margin_left = 74.0
+margin_right = 144.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource( 7 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun2"]
+anchor_left = 0.536
+anchor_top = 0.5
+anchor_right = 0.536
+anchor_bottom = 0.5
+margin_left = -20.52
+margin_top = -22.0
+margin_right = 20.48
+margin_bottom = 23.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Gun3" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+margin_left = 148.0
+margin_right = 218.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource( 9 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun3"]
+anchor_left = 0.493
+anchor_top = 0.543
+anchor_right = 0.493
+anchor_bottom = 0.543
+margin_left = -22.51
+margin_top = -22.01
+margin_right = 22.49
+margin_bottom = 21.99
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="gun_cost" type="Label" parent="UI/HUD"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 516.0
+margin_top = 575.0
+margin_right = 42.0
+margin_bottom = 289.0
+text = "$125"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ice_gun_cost" type="Label" parent="UI/HUD"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 588.0
+margin_top = 575.0
+margin_right = 628.0
+margin_bottom = 589.0
+text = "$200"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cannon_cost" type="Label" parent="UI/HUD"]
+modulate = Color( 0.0117647, 0, 0, 1 )
+margin_left = 661.0
+margin_top = 575.0
+margin_right = 701.0
+margin_bottom = 589.0
+text = "$400"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tower_placement" type="TileMap" parent="."]
+tile_set = SubResource( 10 )
+cell_quadrant_size = 1
+format = 1
+
+[node name="PlacementSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="spider" type="Path2D" parent="."]
+curve = SubResource( 11 )
+
+[node name="fly" type="Path2D" parent="."]
+position = Vector2( 3.53552, -0.707123 )
+curve = SubResource( 12 )
+
+[node name="deathworm" type="Path2D" parent="."]
+curve = SubResource( 13 )
 
 [node name="user_interface" type="Control" parent="."]
 margin_right = 40.0
@@ -242,206 +497,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 0, -2 )
-stream = ExtResource( 7 )
-volume_db = -5.415
-
-[node name="PopupMenu" type="PopupMenu" parent="."]
-pause_mode = 2
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -514.0
-margin_top = -598.0
-margin_right = -146.0
-margin_bottom = -308.0
-items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+[node name="user_cash" type="Label" parent="user_interface"]
+margin_left = 901.0
+margin_right = 941.0
+margin_bottom = 19.0
+rect_scale = Vector2( 3, 3 )
+text = "$0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Control" type="Control" parent="PopupMenu"]
-margin_left = 10.0
-margin_top = 3.0
-margin_right = 366.0
-margin_bottom = 274.0
-script = SubResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="PopupMenu/Control"]
-anchor_left = 0.006
-anchor_top = 0.03
-anchor_right = 0.98
-anchor_bottom = 0.328
-margin_left = -6.136
-margin_top = -5.13
-margin_right = 2.12
-margin_bottom = 2.112
-text = "Resume"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button2" type="Button" parent="PopupMenu/Control"]
-anchor_left = 0.006
-anchor_top = 0.362
-anchor_right = 0.98
-anchor_bottom = 0.649
-margin_left = -5.136
-margin_top = -4.10201
-margin_right = 3.12
-margin_bottom = 4.12099
-text = "Back to menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button3" type="Button" parent="PopupMenu/Control"]
-anchor_left = 0.006
-anchor_top = 0.686
-anchor_right = 0.983
-anchor_bottom = 1.0
-margin_left = -4.136
-margin_top = -4.90601
-margin_right = 1.05197
-margin_bottom = 6.0
-text = "Quit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="click" type="AudioStreamPlayer2D" parent="PopupMenu"]
-stream = ExtResource( 4 )
-
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource( 11 )
-
-[node name="HUD" type="Control" parent="UI"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -510.0
-margin_top = -599.0
-margin_right = 518.0
-margin_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -14.0
-margin_top = 220.0
-margin_right = 204.0
-margin_bottom = 291.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Gun1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
-margin_right = 70.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource( 7 )
-expand = true
-
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun1"]
-anchor_left = 0.521
-anchor_top = 0.5
-anchor_right = 0.521
-anchor_bottom = 0.5
-margin_left = -20.47
-margin_top = -21.0
-margin_right = 20.53
-margin_bottom = 17.0
-size_flags_horizontal = 4
-size_flags_vertical = 5
-texture = ExtResource( 12 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Gun2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
-margin_left = 74.0
-margin_right = 144.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource( 9 )
-expand = true
-
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun2"]
-anchor_left = 0.536
-anchor_top = 0.5
-anchor_right = 0.536
-anchor_bottom = 0.5
-margin_left = -20.52
-margin_top = -22.0
-margin_right = 20.48
-margin_bottom = 23.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource( 13 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Gun3" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
-margin_left = 148.0
-margin_right = 218.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource( 11 )
-expand = true
-
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun3"]
-anchor_left = 0.493
-anchor_top = 0.543
-anchor_right = 0.493
-anchor_bottom = 0.543
-margin_left = -22.51
-margin_top = -22.01
-margin_right = 22.49
-margin_bottom = 21.99
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource( 14 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Towers" type="Node2D" parent="."]
-
-[node name="tower_placement" type="TileMap" parent="."]
-tile_set = SubResource( 4 )
-cell_quadrant_size = 1
-format = 1
-
-[node name="PlacementSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
 
 [connection signal="timeout" from="bug_spawn_timer" to="." method="_on_bug_spawn_timer_timeout"]
-[connection signal="pressed" from="user_interface/start_next_wave" to="." method="_on_start_next_wave_pressed"]
 [connection signal="pressed" from="PopupMenu/Control/Button" to="PopupMenu/Control" method="_on_Button_pressed"]
 [connection signal="pressed" from="PopupMenu/Control/Button2" to="PopupMenu/Control" method="_on_Button2_pressed"]
 [connection signal="pressed" from="PopupMenu/Control/Button3" to="PopupMenu/Control" method="_on_Button3_pressed"]
 [connection signal="pressed" from="UI/HUD/BuildBar/Gun1" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="UI/HUD/BuildBar/Gun2" to="." method="_on_Gun2_pressed"]
 [connection signal="pressed" from="UI/HUD/BuildBar/Gun3" to="." method="_on_Gun3_pressed"]
+[connection signal="pressed" from="user_interface/start_next_wave" to="." method="_on_start_next_wave_pressed"]

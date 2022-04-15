@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ButtonsAndArt/background-small-size/sk4.png" type="Texture" id=1]
+[ext_resource path="res://player score scene/player_score_display.gd" type="Script" id=2]
+
+[node name="player_score_display" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 598.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="display_score" type="ColorRect" parent="background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -477.0
+margin_top = -266.5
+margin_right = 477.0
+margin_bottom = 266.5
+color = Color( 0.286275, 0.133333, 0.133333, 0.705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="high_score" type="Label" parent="background/display_score"]
+margin_left = 24.0
+margin_top = 71.5
+margin_right = 102.0
+margin_bottom = 87.5
+rect_scale = Vector2( 2, 3 )
+text = "High Score: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_score" type="Label" parent="background/display_score"]
+margin_left = 23.0
+margin_top = 213.5
+margin_right = 90.0
+margin_bottom = 227.5
+rect_scale = Vector2( 2, 3 )
+text = "New Score"
+
+[node name="Button" type="Button" parent="background/display_score"]
+modulate = Color( 1, 1, 1, 0.74902 )
+margin_left = 388.0
+margin_top = 463.5
+margin_right = 592.0
+margin_bottom = 516.5
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="background/display_score/Button" to="." method="_on_Button_pressed"]

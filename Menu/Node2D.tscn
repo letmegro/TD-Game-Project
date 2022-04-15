@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sounds/LoopingTrack use for main menu and settings.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/Menu_Selection_Click.wav" type="AudioStream" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://ButtonsAndArt/text assets/start.png" type="Texture" id=7]
 [ext_resource path="res://ButtonsAndArt/text assets/quit.png" type="Texture" id=8]
 [ext_resource path="res://ButtonsAndArt/text assets/options.png" type="Texture" id=9]
-[ext_resource path="res://Menu/cutscene-v1.ogv" type="VideoStream" id=10]
 
 [node name="KingNode" type="Control"]
 anchor_left = 0.5
@@ -105,16 +104,6 @@ texture = ExtResource( 8 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 volume_db = -5.415
-
-[node name="VideoPlayer" type="VideoPlayer" parent="."]
-margin_left = -493.0
-margin_top = -382.0
-margin_right = 538.0
-margin_bottom = 432.0
-stream = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
