@@ -375,6 +375,13 @@ script/source = "extends Control
 \"popup menu and game pause
 \"\"\"
 
+#these variables are to reestablish the bugs original health upon death
+var spider_health = GameVariables.AI_Dict_Var_Keys[\"spider\"][\"health\"]
+var fly_health    = GameVariables.AI_Dict_Var_Keys[\"fly\"][\"health\"]
+var worm_health   = GameVariables.AI_Dict_Var_Keys[\"worm\"][\"health\"]
+var deathworm_health = GameVariables.AI_Dict_Var_Keys[\"deathworm\"][\"health\"]
+var wasp_health   = GameVariables.AI_Dict_Var_Keys[\"wasp\"][\"health\"]
+
 onready var _pm = $\"..\"
 
 func _input(event):
@@ -412,7 +419,11 @@ func _on_Button2_pressed():
 		$\"../click\".play()
 		yield(get_tree().create_timer(0.5), \"timeout\")
 		
-	
+	GameVariables.AI_Dict_Var_Keys[\"spider\"][\"health\"] = spider_health
+	GameVariables.AI_Dict_Var_Keys[\"fly\"][\"health\"]    = fly_health
+	GameVariables.AI_Dict_Var_Keys[\"worm\"][\"health\"]   = worm_health
+	GameVariables.AI_Dict_Var_Keys[\"deathworm\"][\"health\"] = deathworm_health
+	GameVariables.AI_Dict_Var_Keys[\"wasp\"][\"health\"]   = wasp_health
 	get_tree().paused = false
 	get_tree().change_scene(\"res://Menu/Node2D.tscn\")
 	
@@ -691,7 +702,7 @@ volume_db = -5.415
 script = ExtResource( 21 )
 
 [node name="HUD" type="Control" parent="UI"]
-anchor_left = 0.5
+anchor_left = 0.494141
 anchor_top = 1.0
 anchor_right = 0.494141
 anchor_bottom = 1.0
@@ -816,7 +827,7 @@ margin_left = 588.0
 margin_top = 572.0
 margin_right = 628.0
 margin_bottom = 586.0
-text = "$200"
+text = "$250"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -827,7 +838,7 @@ margin_left = 661.0
 margin_top = 572.0
 margin_right = 701.0
 margin_bottom = 586.0
-text = "$400"
+text = "$500"
 __meta__ = {
 "_edit_use_anchors_": false
 }

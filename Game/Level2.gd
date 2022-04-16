@@ -48,6 +48,12 @@ var invalid_tiles
 var tower_tiles = []
 var tower_tile_positions = []
 
+#these variables are to reestablish the bugs original health upon death
+var spider_health = GameVariables.AI_Dict_Var_Keys["spider"]["health"]
+var fly_health    = GameVariables.AI_Dict_Var_Keys["fly"]["health"]
+var worm_health   = GameVariables.AI_Dict_Var_Keys["worm"]["health"]
+var deathworm_health = GameVariables.AI_Dict_Var_Keys["deathworm"]["health"]
+var wasp_health   = GameVariables.AI_Dict_Var_Keys["wasp"]["health"]
 #player cash
 var user_cash = GameVariables.Player_Dict_Var_Keys["start_money"]
 
@@ -764,6 +770,24 @@ func infinite_spawninglogic():
 	#at least 50
 	if infinite_count != 50:
 		infinite_count += 1
+		
+	#makes bugs have more health with each increased rounds until player loses
+	if wave_count == 11:
+		GameVariables.AI_Dict_Var_Keys["spider"]["health"] += 1
+	elif wave_count == 12:
+		GameVariables.AI_Dict_Var_Keys["fly"]["health"] += 1
+	elif wave_count == 13:
+		GameVariables.AI_Dict_Var_Keys["worm"]["health"] += 1
+	elif wave_count == 14:
+		GameVariables.AI_Dict_Var_Keys["deathworm"]["health"] += 1
+	elif wave_count == 11:
+		GameVariables.AI_Dict_Var_Keys["wasp"]["health"] += 1
+	else:
+		GameVariables.AI_Dict_Var_Keys["wasp"]["health"] += 1
+		GameVariables.AI_Dict_Var_Keys["deathworm"]["health"] += 1
+		GameVariables.AI_Dict_Var_Keys["worm"]["health"] += 1
+		GameVariables.AI_Dict_Var_Keys["fly"]["health"] += 1
+		GameVariables.AI_Dict_Var_Keys["spider"]["health"] += 1
 	$bug_spawn_timer2.start(15)
 	$level2_control/start_next_wave.disabled = false
 
@@ -776,6 +800,11 @@ func lose_a_life():
 	#if amount of player lifes reaches 0 then save the score
 	#update player high score
 	if lives <= 0:
+		GameVariables.AI_Dict_Var_Keys["spider"]["health"] = spider_health
+		GameVariables.AI_Dict_Var_Keys["fly"]["health"]    = fly_health
+		GameVariables.AI_Dict_Var_Keys["worm"]["health"]   = worm_health
+		GameVariables.AI_Dict_Var_Keys["deathworm"]["health"] = deathworm_health
+		GameVariables.AI_Dict_Var_Keys["wasp"]["health"]   = wasp_health
 		GameVariables.player_score = int($level2_control/score.text)
 		if (GameVariables.player_high_score < GameVariables.player_score):
 			GameVariables.player_high_score = int(GameVariables.player_score)
