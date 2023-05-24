@@ -3,6 +3,6 @@ This is a game made using GDScript in a Godot engine. mainly a school project bu
 
 Programmers: Nick, Oluwasesan
 
-Artist: Connor
+Artist & Audio Master: Connor
 
-*more to be added*
+Scrum Master: Nicolas
